@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(this.state.order);
+   // console.log(this.state.order);
     localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order)); // convert to a string
   }
 
