@@ -63,6 +63,19 @@ class App extends React.Component {
     })
   };
 
+  deleteFish = (key) => {
+    // key -> which is updated,
+    // take a copy of the current fish
+    const fishes = {...this.state.fishes};
+    // update the state
+    fishes[key] = null; // null bcz to mirror firebase, otherwise we can use delete
+    // set the new fishes object to state
+    this.setState({
+      fishes
+    })
+  };
+
+
   loadSampleFishes = () => {
     this.setState({
       fishes: sampleFishes
@@ -78,8 +91,19 @@ class App extends React.Component {
     this.setState({
       order: order
     })
-
   };
+
+  deleteToOrder = key => {
+    // take a copy of the state
+    const order = {...this.state.order};
+    // remove an item from the order
+    delete  order[key];
+    //call setstate to update our state object
+    this.setState({
+      order: order
+    })
+  };
+
   render() {
     return (
         <div className='catch-of-the-day'>
@@ -102,12 +126,14 @@ class App extends React.Component {
           <Order
               fishes={this.state.fishes}
               order={this.state.order}
+              deleteToOrder={this.deleteToOrder}
           />
           <Inventory
               addFish={this.addFish}
               loadSampleFishes={this.loadSampleFishes}
               fishes={this.state.fishes}
               updateFish = {this.updateFish}
+              deleteFish={this.deleteFish}
           />
         </div>
     );
