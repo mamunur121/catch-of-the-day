@@ -30,7 +30,7 @@ class Order extends React.Component {
 
              lbs {fish.name}
             {formatPrice(count * fish.price)}
-            <button onClick={()=>this.props.deleteToOrder(key)}>
+            <button onClick={()=>this.props.deleteToOrder(key)} style={{color: 'white', backgroundColor: 'red'}}>
               &times;
             </button>
           </li>
